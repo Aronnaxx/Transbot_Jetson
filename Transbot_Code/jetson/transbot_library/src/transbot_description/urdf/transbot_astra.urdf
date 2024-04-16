@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="transbot_description">
+    <link name="base_footprint"/>
+    <link name="base_link">
+        <inertial>
+            <origin xyz="-0.011 0.0002 -0.00832" rpy="0 0 0"/>
+            <mass value="1.1011218463245"/>
+            <inertia
+                    ixx="0.00683403160871643"
+                    ixy="-1.43326126624159E-06"
+                    ixz="0.000665507738691208"
+                    iyy="0.0091844048006001"
+                    iyz="3.7191085325542E-06"
+                    izz="0.0114582299070878"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/base_link.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0 0.7 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 -1.5708"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/base_link.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 0.08" rpy="0 0 0"/>
+    </joint>
+    <link name="astra_link">
+        <inertial>
+            <origin xyz="0.0003 -3.63185E-06 -0.01238" rpy="0 0 0"/>
+            <mass value="0.249477026881758"/>
+            <inertia
+                    ixx="0.000512759440122099"
+                    ixy="3.59531977965561E-08"
+                    ixz="-7.77105312830466E-06"
+                    iyy="0.000168771991127263"
+                    iyz="4.52266817392523E-08"
+                    izz="0.000428421579554258"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/astra_link.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/astra_link.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="astra_joint" type="revolute">
+        <origin xyz="0.0484 0 0.10494" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="astra_link"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.52358" upper="0.52358" effort="100" velocity="1"/>
+    </joint>
+    <link name="arm">
+        <inertial>
+            <origin xyz="-0.006174 8.44369E-05 0.0132" rpy="0 0 0"/>
+            <mass value="0.067681113134478"/>
+            <inertia
+                    ixx="2.68497509518873E-05"
+                    ixy="-3.33020165981552E-06"
+                    ixz="-9.65563060195426E-07"
+                    iyy="3.51677567732461E-05"
+                    iyz="-4.72072757937217E-06"
+                    izz="4.4994530861743E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="arm_joint" type="fixed">
+        <origin xyz="0.12925 0 -0.014083" rpy="-0.7854 0 -1.5708"/>
+        <parent link="base_link"/>
+        <child link="arm"/>
+        <axis xyz="0 0 0"/>
+    </joint>
+    <link name="arm_link1">
+        <inertial>
+            <origin xyz="-0.00227 0.024777 0.000485" rpy="0 1.5708 0"/>
+            <mass value="0.0315348657457593"/>
+            <inertia
+                    ixx="2.62365924906028E-05"
+                    ixy="-8.71620806198248E-07"
+                    ixz="3.70960358896292E-09"
+                    iyy="5.75254728345384E-06"
+                    iyz="1.32494709462361E-07"
+                    izz="2.43479091390021E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm_link1.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm_link1.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="arm_joint1" type="revolute">
+        <origin xyz="0 0.0295 0.0471" rpy="0 -1.5708 3.14"/>
+        <parent link="arm"/>
+        <child link="arm_link1"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-3.927" upper="0" effort="100" velocity="1"/>
+    </joint>
+    <link name="arm_link2">
+        <inertial>
+            <origin xyz="-0.012 0.04428 -0.00083" rpy="0 0 0"/>
+            <mass value="0.064068284960248"/>
+            <inertia
+                    ixx="5.32496834034383E-05"
+                    ixy="1.14801087297394E-05"
+                    ixz="-7.21376567958445E-07"
+                    iyy="1.94399604109465E-05"
+                    iyz="1.57043385958373E-06"
+                    izz="5.71389111747307E-05"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm_link2.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0 0.7 0 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/arm_link2.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="arm_joint2" type="revolute">
+        <origin xyz="0 0.08285 0" rpy="0 0 -2.3562"/>
+        <parent link="arm_link1"/>
+        <child link="arm_link2"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-0.2617" upper="3.926875" effort="100" velocity="1"/>
+    </joint>
+    <link name="right_link1">
+        <inertial>
+            <origin xyz="-0.00022 0.0042 0.0001565" rpy="0 0 0"/>
+            <mass value="0.00183348845051841"/>
+            <inertia
+                    ixx="2.0324777292641E-07"
+                    ixy="-8.64022960782153E-09"
+                    ixz="3.40379009885252E-10"
+                    iyy="5.15029451291985E-08"
+                    iyz="-6.50409742399053E-09"
+                    izz="2.47897272989704E-07"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link1.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link1.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Jaws_joint" type="revolute">
+        <origin xyz="0.0045 0.06415 -0.01185" rpy="0 1.5708 0"/>
+        <parent link="arm_link2"/>
+        <child link="right_link1"/>
+        <axis xyz="0 0 1"/>
+        <limit lower="-1.6" upper="0" effort="100" velocity="1"/>
+    </joint>
+    <link name="right_link2">
+        <inertial>
+            <origin xyz="-0.0062 0.020796 -0.0031" rpy="0 0 0"/>
+            <mass value="0.00249011366902266"/>
+            <inertia
+                    ixx="6.52013082134657E-07"
+                    ixy="1.28158340799434E-07"
+                    ixz="1.32545668593733E-09"
+                    iyy="5.40527011205097E-08"
+                    iyz="-4.44570381398951E-09"
+                    izz="6.84401893462913E-07"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link2.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294  0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link2.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="right_joint2" type="continuous">
+        <origin xyz="0.0009 0.03 0" rpy="0 0 0"/>
+        <parent link="right_link1"/>
+        <child link="right_link2"/>
+        <axis xyz="0 0 -1"/>
+        <mimic joint="Jaws_joint" multiplier="1"/>
+    </joint>
+    <link name="right_link3">
+        <inertial>
+            <origin xyz="6.84923716706099E-05 0.018624 -0.00265" rpy="0 0 0"/>
+            <mass value="0.000745"/>
+            <inertia
+                    ixx="1.04686918388409E-07"
+                    ixy="-3.26477129854809E-10"
+                    ixz="1.48779762241015E-11"
+                    iyy="1.59187935398975E-08"
+                    iyz="4.04566802579487E-09"
+                    izz="9.13337951601148E-08"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link3.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/right_link3.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="right_joint3" type="continuous">
+        <origin xyz="0.0045 0.08215 -0.00395" rpy="0 1.5708 0"/>
+        <parent link="arm_link2"/>
+        <child link="right_link3"/>
+        <axis xyz="0 0 1"/>
+        <mimic joint="right_joint2" multiplier="1"/>
+    </joint>
+    <link name="left_link1">
+        <inertial>
+            <origin xyz="0.0002688 0.00628852 0.001" rpy="0 0 0"/>
+            <mass value="0.00121"/>
+            <inertia
+                    ixx="1.69131415914509E-07"
+                    ixy="9.14718502533155E-09"
+                    ixz="-1.90844103767323E-14"
+                    iyy="3.19585470928261E-08"
+                    iyz="3.97689754998194E-14"
+                    izz="2.00283501063598E-07"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link1.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link1.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="left_joint1" type="continuous">
+        <origin xyz="0.0045 0.06415 0.0127" rpy="0 1.5708 0"/>
+        <parent link="arm_link2"/>
+        <child link="left_link1"/>
+        <axis xyz="0 0 1"/>
+        <mimic joint="Jaws_joint" multiplier="-1"/>
+    </joint>
+    <link name="left_link2">
+        <inertial>
+            <origin xyz="0.0062 0.0208 -0.0031" rpy="0 0 0"/>
+            <mass value="0.00249011366902267"/>
+            <inertia
+                    ixx="6.52017871569716E-07"
+                    ixy="-1.28147201790302E-07"
+                    ixz="-1.325374459077E-09"
+                    iyy="5.40479137210298E-08"
+                    iyz="-4.44572858127216E-09"
+                    izz="6.84401895498491E-07"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link2.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link2.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="left_joint2" type="continuous">
+        <origin xyz="-0.00091 0.03 0" rpy="0 0 0"/>
+        <parent link="left_link1"/>
+        <child link="left_link2"/>
+        <axis xyz="0 0 1"/>
+        <mimic joint="left_joint1" multiplier="-1"/>
+    </joint>
+    <link name="left_link3">
+        <inertial>
+            <origin xyz="8.14319609551461E-05 0.018624 -0.0035" rpy="0 0 0"/>
+            <mass value="0.000745"/>
+            <inertia
+                    ixx="1.04686410925661E-07"
+                    ixy="-3.8815108567023E-10"
+                    ixz="1.76885865580073E-11"
+                    iyy="1.59192877854819E-08"
+                    iyz="4.04566084059286E-09"
+                    izz="9.13337860026262E-08"/>
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link3.STL"/>
+            </geometry>
+            <material name="">
+                <color rgba="0.75294 0.75294 0.75294 1"/>
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh filename="package://transbot_description/meshes/left_link3.STL"/>
+            </geometry>
+        </collision>
+    </link>
+    <joint name="left_joint3" type="continuous">
+        <origin xyz="0.0045 0.08215 0.00505" rpy="0 1.5708 0"/>
+        <parent link="arm_link2"/>
+        <child link="left_link3"/>
+        <axis xyz="0 0 1"/>
+        <mimic joint="left_joint2" multiplier="-1"/>
+    </joint>
+</robot>

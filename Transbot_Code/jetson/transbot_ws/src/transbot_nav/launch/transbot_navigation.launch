@@ -1,0 +1,17 @@
+<launch>
+    <!-- 是否打开rviz || Whether to open rviz -->
+    <arg name="open_rviz" default="false"/>
+    <!-- 地图名 || Map name -->
+    <arg name="map" default="house"/>
+    <!-- 加载地图 || Load map -->
+    <node name="map_server" pkg="map_server" type="map_server" args="$(find transbot_nav)/maps/$(arg map).yaml"/>
+    <include file="$(find transbot_nav)/launch/library/amcl.launch"/>
+    <include file="$(find transbot_nav)/launch/library/app.launch"/>
+    <include file="$(find transbot_nav)/launch/library/move_base.launch"/>
+    <group if="$(arg open_rviz)">
+        <include file="$(find transbot_nav)/launch/view/view_navigate.launch"/>
+    </group>
+    <!-- MarkerArray node> -->
+    <node name='send_mark' pkg="transbot_nav" type="send_mark.py"/>
+</launch>
+

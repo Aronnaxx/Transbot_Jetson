@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/yahboom/transbot_ws/src/transbot_nav/cmake-build-debug/devel/setup.sh

@@ -1,0 +1,11 @@
+
+<launch>
+    <include file="$(find transbot_nav)/launch/library/rplidar.launch"/>
+    <include file="$(find transbot_nav)/launch/library/gmapping.launch"/>
+    <!-- 激光雷达的坐标系 || Lidar coordinate system-->
+    <node pkg="tf" type="static_transform_publisher" name="odom_to_base_footprint"
+          args="0 0 0 0 0 0  /odom /base_footprint  30"/>
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+          args="0 0 0 0 0 0  /base_footprint /laser  30"/>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find transbot_nav)/rviz/test_map.rviz"/>
+</launch>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="open_rviz" default="false"/>
+    <include file="$(find transbot_nav)/launch/library/app.launch"/>
+    <include file="$(find transbot_nav)/launch/library/move_base.launch"/>
+    <include file="$(find transbot_nav)/launch/library/rtabmap_nav.launch"/>
+    <!-- MarkerArray功能节点 || MarkerArray node-->
+    <node name='send_mark' pkg="transbot_nav" type="send_mark.py"/>
+    <group if="$(arg open_rviz)">
+        <include file="$(find transbot_nav)/launch/view/view_rtabmap_nav.launch"/>
+    </group>
+</launch>

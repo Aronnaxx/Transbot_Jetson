@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="open_rviz" default="false"/>
+    <include file="$(find transbot_nav)/launch/library/rtabmap.launch"/>
+    <group if="$(arg open_rviz)">
+        <include file="$(find transbot_nav)/launch/view/view_rtabmap.launch"/>
+    </group>
+</launch>

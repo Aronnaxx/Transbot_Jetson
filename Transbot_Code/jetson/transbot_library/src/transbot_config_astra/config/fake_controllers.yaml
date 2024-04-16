@@ -1,0 +1,21 @@
+controller_list:
+  - name: fake_arm_controller
+    type: $(arg execution_type)
+    joints:
+      - arm_joint1
+      - arm_joint2
+  - name: fake_astra_controller
+    type: $(arg execution_type)
+    joints:
+      - astra_joint
+  - name: fake_Jaws_controller
+    type: $(arg execution_type)
+    joints:
+      - Jaws_joint
+initial:  # Define initial robot poses.
+  - group: arm
+    pose: pose1
+  - group: astra
+    pose: astra1
+  - group: Jaws
+    pose: close

@@ -1,0 +1,9 @@
+<launch>
+    <arg name="open_rviz" default="false"/>
+    <include file="$(find transbot_nav)/launch/library/move_base.launch" />
+    <include file="$(find transbot_nav)/launch/library/simple.launch"/>
+    <include file="$(find transbot_nav)/launch/library/gmapping.launch"/>
+    <group if="$(arg open_rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" required="true" args="-d $(find transbot_nav)/rviz/rrt_map.rviz"/>
+    </group>
+</launch>

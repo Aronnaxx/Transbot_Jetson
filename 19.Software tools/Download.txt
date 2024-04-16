@@ -1,2 +1,0 @@
-Click [Download]---[Windows SoftwareTools] to download the software tools.
-Link: http://www.yahboom.net/study/Transbot-jetson_nano

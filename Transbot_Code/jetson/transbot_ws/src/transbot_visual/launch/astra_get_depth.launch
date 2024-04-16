@@ -1,0 +1,4 @@
+<launch>
+    <node name="astra_depth_image_py" pkg="transbot_visual" type="astra_depth_image.py" output="screen"/>
+<!--    <node name="astra_depth_image_cpp" pkg="transbot_visual" type="astra_depth_image" output="screen"/>-->
+</launch>

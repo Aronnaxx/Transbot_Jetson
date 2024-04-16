@@ -1,0 +1,13 @@
+<launch>
+    <arg name="open_rplidar" default="true"/>
+    <include file="$(find transbot_bringup)/launch/bringup.launch"/>
+    <include file="$(find transbot_visual)/launch/opencv_apps.launch">
+        <arg name="img_transform" default="false"/>
+    </include>
+    <node pkg="transbot_program" type="transbot_patrol.py" name="TransbotPatrol" output="screen"/>  
+    <!-- 启动web_video_server -->
+    <node pkg="web_video_server" type="web_video_server" name="web_video_server" output="screen"/>
+    <group if="$(arg open_rplidar)">
+        <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+    </group>
+</launch>

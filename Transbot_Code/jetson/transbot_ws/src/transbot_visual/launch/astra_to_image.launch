@@ -1,0 +1,3 @@
+<launch>
+    <node name="astra_pub_image" pkg="transbot_visual" type="astra_to_image.py" output="screen"/>
+</launch>

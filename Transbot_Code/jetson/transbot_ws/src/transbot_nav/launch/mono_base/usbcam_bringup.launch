@@ -1,0 +1,14 @@
+<launch>
+    <arg name="lidarswitch" default="true"/>
+    <include file="$(find transbot_bringup)/launch/bringup.launch"/>
+    <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+    <group if="$(arg lidarswitch)">
+        <include file="$(find transbot_nav)/launch/library/rplidar.launch"/>
+        <!-- 相机的坐标系 || Camera's coordinate system-->
+        <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera"
+              args="0.0484 0 0.10403 0 0 0  /base_link /camera_link  30"/>
+        <!-- 激光雷达的坐标系 || Lidar coordinate system-->
+        <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+              args="-0.03 0 0.13 3.1416 0 0  /base_link /laser  30"/>
+    </group>
+</launch>

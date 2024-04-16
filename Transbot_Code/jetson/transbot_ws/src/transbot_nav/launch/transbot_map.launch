@@ -1,0 +1,12 @@
+<launch>
+    <arg name="map_type" default="gmapping" doc="opt: gmapping,hector,karto,cartographer"/>
+    <arg name="open_rviz" default="false"/>
+    <include file="$(find transbot_nav)/launch/library/$(arg map_type).launch"/>
+    <include file="$(find transbot_nav)/launch/library/app.launch"/>
+    <group if="$(arg open_rviz)">
+        <include if="$(eval arg('map_type') != 'cartographer')"
+                 file="$(find transbot_nav)/launch/view/view_map.launch"/>
+        <include if="$(eval arg('map_type') == 'cartographer')"
+                 file="$(find transbot_nav)/launch/view/view_cartographer.launch"/>
+    </group>
+</launch>

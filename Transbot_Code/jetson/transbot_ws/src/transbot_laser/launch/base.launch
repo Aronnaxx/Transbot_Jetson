@@ -1,0 +1,17 @@
+<launch>
+    <!-- 启动激光雷达节点-->
+    <!-- Activate the lidar node -->
+    <include file="$(find rplidar_ros)/launch/rplidar.launch"/>
+    <!-- 动态调试工具节点-->
+    <!-- Dynamic debug tool node -->
+<!--    <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" output="screen"/>-->
+    <!-- 启动小车底盘驱动节点-->
+    <!-- Start the car chassis drive node -->
+    <node pkg="transbot_bringup" type="transbot_driver.py" name="transbot_node" required="true" output="screen">
+        <param name="imu" value="/transbot/imu"/>
+        <param name="vel" value="/transbot/get_vel"/>
+    </node>
+    <!-- 手柄控制节点 -->
+    <!-- Handle control node -->
+    <include file="$(find transbot_ctrl)/launch/transbot_joy.launch"/>
+</launch>

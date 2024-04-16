@@ -1,0 +1,4 @@
+<launch>
+    <node name="astra_rgb_image_py" pkg="transbot_visual" type="astra_rgb_image.py" output="screen"/>
+<!--    <node name="astra_rgb_image_cpp" pkg="transbot_visual" type="get_color_image" output="screen"/>-->
+</launch>

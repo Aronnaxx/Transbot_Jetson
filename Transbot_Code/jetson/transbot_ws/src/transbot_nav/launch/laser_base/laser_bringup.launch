@@ -1,0 +1,8 @@
+<launch>
+    <!-- 驱动模块 || driver module -->
+    <include file="$(find transbot_bringup)/launch/bringup.launch"/>
+    <include file="$(find transbot_nav)/launch/library/rplidar.launch"/>
+    <!-- 激光雷达的坐标系 || Lidar coordinate system -->
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser"
+          args="-0.03 0 0.13 3.1416 0 0  /base_link /laser  30"/>
+</launch>
